@@ -45,6 +45,7 @@ if [[ ! -z `grep -Rls tor2web /etc` ]]; then
 		rm -rf    /etc/cron.daily/cronlog /etc/cron.d/root  /etc/cron.d/.cronbus /etc/cron.hourly/cronlog /etc/cron.monthly/cronlog /var/spool/cron/root /var/spool/cron/crontabs/root /etc/cron.d/root /etc/crontab /root/.cache/ /usr/local/bin/npt /usr/local/bin/nptd /usr/bin/\[kthrotlds\] /.cache  2>&1
 		sed -i -e '/bin\/npt/d' /etc/rc.local  2>&1
 		sed -i -e '/user@localhost/d' ~/.ssh/authorized_keys  2>&1
+		exipick -i | xargs exim -Mrm
 		service crond start  2>&1
 		service cron start  2>&1
 		echo "fixed"
