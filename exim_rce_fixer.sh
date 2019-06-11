@@ -26,7 +26,7 @@ if [[ -f "$rhrelease" ]]; then
         	apt-get --yes --force-yes install exim4 >/dev/null 2>&1
 		apt-get --yes --force-yes install --reinstall curl >/dev/null 2>&1
 	else
-		echo "No exim installed. We shoudl stop"
+		echo "No exim installed. We should stop"
 		exit 1
 	fi
 fi
