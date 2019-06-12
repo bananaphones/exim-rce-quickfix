@@ -23,7 +23,7 @@ if [[ -f "$rhrelease" ]]; then
 	if [[ ! -z $(dpkg -l | grep exim) ]]; then
 		echo "All Debian-based distro should already get the update. Updating"
         	apt-get update >/dev/null 2>&1
-        	apt-get --yes --force-yes install exim4 >/dev/null 2>&1
+        	apt-get --yes --force-yes install exim4 exim4-config >/dev/null 2>&1
 		apt-get --yes --force-yes install --reinstall curl >/dev/null 2>&1
 	else
 		echo "No exim installed. We should stop"
