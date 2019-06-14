@@ -10,9 +10,8 @@ if [[ -f "$rhrelease" ]]; then
                 	yum install -y -q -e 0 exim  >/dev/null 2>&1
 			yum reinstall -y -q -e 0 curl >/dev/null 2>&1
         	else
-                	echo "Centos 6 only has fix in testing repo. Installing from it."
-			wget https://kojipkgs.fedoraproject.org//packages/exim/4.92/1.el6/x86_64/exim-4.92-1.el6.x86_64.rpm 
-			rpm -Fvh exim-4.92-1.el6.x86_64.rpm >/dev/null 2>&1
+                	echo "Centos 6 now has Exim 4.92 in mainline repo too"
+                	yum install -y -q -e 0 exim  >/dev/null 2>&1
 			yum reinstall -y -q -e 0 curl >/dev/null 2>&1
         	fi
 	else 
@@ -23,7 +22,7 @@ if [[ -f "$rhrelease" ]]; then
 	if [[ ! -z $(dpkg -l | grep exim) ]]; then
 		echo "All Debian-based distro should already get the update. Updating"
         	apt-get update >/dev/null 2>&1
-        	apt-get --yes --force-yes install exim4 exim4-config >/dev/null 2>&1
+        	apt-get --yes --force-yes install exim4 exim4-config exim4-daemon-heavy >/dev/null 2>&1
 		apt-get --yes --force-yes install --reinstall curl >/dev/null 2>&1
 	else
 		echo "No exim installed. We should stop"
